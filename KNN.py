@@ -15,7 +15,7 @@ class KNN:
 			indice = np.argpartition(dis, k)[:k]
 			(v, c) = np.unique(self.y_train[indice], return_counts = True)
 			predicted_label = v[np.argmax(c)]
-			res.append(predicted_label)
+			res.append(int(predicted_label))
 			if show_progress:
 				print(predicted_label)
 		return res
