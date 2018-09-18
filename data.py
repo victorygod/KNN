@@ -1,6 +1,6 @@
 import numpy as np
 
-def load_data(filename):
+def load_data_pima(filename):
 	x, y = [], []
 	with open(filename, "r") as f:
 		lines = f.readlines()
@@ -10,8 +10,17 @@ def load_data(filename):
 			y.append(float(a[-1]))
 	return np.array(x), np.array(y)
 
-def prepareData(filename):
-	x, y = load_data(filename)
+def load_data_mnist(filename):
+	x, y = [], []
+	with open(filename, "r") as f:
+		lines = f.readlines()
+		for line in lines[1:]:
+			a = line.split(',')
+			x.append([float(aa) for aa in a[1:]])
+			y.append(float(a[0]))
+	return np.array(x), np.array(y)	
+
+def prepareData(x, y):
 	l = len(y)
 	indices = np.random.permutation(l)	
 	train_size = int(0.8*l)

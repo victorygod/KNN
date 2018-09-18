@@ -3,7 +3,8 @@ import numpy as np
 import data
 
 if __name__ == "__main__":
-	x_train, y_train, x_test, y_test, x_val, y_val = data.prepareData("diabetes.csv")
+	x, y = data.load_data_pima("diabetes.csv")
+	x_train, y_train, x_test, y_test, x_val, y_val = data.prepareData(x, y)
 	model = KNN(x_train, y_train)
 	kk, temp_acc = 0, 0
 	for k in range(1,50):
